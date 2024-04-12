@@ -2,6 +2,7 @@
 
 const { Command, Argument } = require('commander');
 const create = require('../src/create');
+const del = require('../src/delete');
 
 const cli = new Command();
 
@@ -12,7 +13,7 @@ const main = () => {
 
     cli.command('create').description('create new command').argument('<command-name>', 'command name').action(create, cli.args[1]);
 
-    cli.command('delete').description('delete command').argument('<command-name>', 'command name').action('delete');
+    cli.command('delete').description('delete command').argument('<command-name>', 'command name').action(del, cli.args[1]);
 
     cli.command('run').description('run command').argument('<command-name>', 'command name').action('run');
 
