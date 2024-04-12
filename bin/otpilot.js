@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 const { Command, Argument } = require('commander');
+const create = require('../src/create');
 
 const cli = new Command();
 
@@ -9,7 +10,7 @@ const main = () => {
 
     cli.command('list').description('list commands').action('list');
 
-    cli.command('create').description('create new command').argument('<command-name>', 'command name').action('create');
+    cli.command('create').description('create new command').argument('<command-name>', 'command name').action(create, cli.args[1]);
 
     cli.command('delete').description('delete command').argument('<command-name>', 'command name').action('delete');
 
