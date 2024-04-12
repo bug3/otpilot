@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 
 const { Command, Argument } = require('commander');
+const list = require('../src/list');
 const create = require('../src/create');
 const del = require('../src/delete');
-const list = require('../src/list');
+const run = require('../src/run');
 
 const cli = new Command();
 
@@ -12,11 +13,11 @@ const main = () => {
 
     cli.command('list').description('list commands').action(list);
 
-    cli.command('create').description('create new command').argument('<command-name>', 'command name').action(create, cli.args[1]);
+    cli.command('create').description('create new command').argument('<command-name>', 'command name').action(create);
 
-    cli.command('delete').description('delete command').argument('<command-name>', 'command name').action(del, cli.args[1]);
+    cli.command('delete').description('delete command').argument('<command-name>', 'command name').action(del);
 
-    cli.command('run').description('run command').argument('<command-name>', 'command name').action('run');
+    cli.command('run').description('run command').argument('<command-name>', 'command name').action(run);
 
     cli.command('copy').description('copy otp').argument('<command-name>', 'command name').action('copy');
 
