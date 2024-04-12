@@ -3,13 +3,14 @@
 const { Command, Argument } = require('commander');
 const create = require('../src/create');
 const del = require('../src/delete');
+const list = require('../src/list');
 
 const cli = new Command();
 
 const main = () => {
     cli.name('otpilot').description('Automate OTP Codes').version('0.0.0');
 
-    cli.command('list').description('list commands').action('list');
+    cli.command('list').description('list commands').action(list);
 
     cli.command('create').description('create new command').argument('<command-name>', 'command name').action(create, cli.args[1]);
 
