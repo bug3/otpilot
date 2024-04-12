@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
 const { Command, Argument } = require('commander');
-const list = require('../src/list');
-const create = require('../src/create');
-const del = require('../src/delete');
-const run = require('../src/run');
+const list = require('../src/commands/list');
+const create = require('../src/commands/create');
+const del = require('../src/commands/delete');
+const run = require('../src/commands/run');
 
 const cli = new Command();
 
