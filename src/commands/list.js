@@ -2,10 +2,10 @@ const uniquenv = require('uniquenv');
 
 const file = './resources/db.uniquenv';
 
-const del = () => {
+const list = () => {
     const parsedData = uniquenv.parse(file) ?? [];
 
-    console.log(parsedData.map(( data ) => {
+    console.log(parsedData.map((data) => {
         const commandData = {
             name: data.name,
             cmd: data.cmd,
@@ -19,4 +19,4 @@ const del = () => {
     }));
 };
 
-module.exports = del;
+module.exports = list;
