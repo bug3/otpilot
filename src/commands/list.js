@@ -3,7 +3,7 @@ const uniquenv = require('uniquenv');
 const file = './resources/db.uniquenv';
 
 const del = () => {
-    const parsedData = uniquenv.parse(file);
+    const parsedData = uniquenv.parse(file) ?? [];
 
     console.log(parsedData.map(( data ) => {
         const commandData = {
