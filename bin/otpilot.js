@@ -5,6 +5,7 @@ const list = require('../src/commands/list');
 const create = require('../src/commands/create');
 const del = require('../src/commands/delete');
 const run = require('../src/commands/run');
+const copy = require('../src/commands/copy');
 
 const cli = new Command();
 
@@ -19,7 +20,7 @@ const main = () => {
 
     cli.command('run').description('run command').argument('<command-name>', 'command name').action(run);
 
-    cli.command('copy').description('copy otp').argument('<command-name>', 'command name').action('copy');
+    cli.command('copy').description('copy otp').argument('<command-name>', 'command name').action(copy);
 
     cli.command('config')
         .description('import or export config file')
