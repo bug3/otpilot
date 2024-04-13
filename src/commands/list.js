@@ -1,9 +1,8 @@
 const uniquenv = require('uniquenv');
-
-const file = './resources/db.uniquenv';
+const { UNIQUENV_FILE } = require('../../enums/enums');
 
 const list = () => {
-    const parsedData = uniquenv.parse(file) ?? [];
+    const parsedData = uniquenv.parse(UNIQUENV_FILE) ?? [];
 
     console.log(parsedData.map((data) => {
         const commandData = {

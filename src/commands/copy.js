@@ -1,11 +1,10 @@
 const uniquenv = require('uniquenv');
 const ncp = require('copy-paste');
 const getOtpCode = require('../getOtpCode');
-
-const file = './resources/db.uniquenv';
+const { UNIQUENV_FILE } = require('../../enums/enums');
 
 const copy = (commandName) => {
-    const parsedData = uniquenv.parse(file);
+    const parsedData = uniquenv.parse(UNIQUENV_FILE);
     const command = parsedData.find(( data ) => data.name === commandName);
 
     if (!command) {

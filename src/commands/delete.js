@@ -1,9 +1,8 @@
 const uniquenv = require('uniquenv');
-
-const file = './resources/db.uniquenv';
+const { UNIQUENV_FILE } = require('../../enums/enums');
 
 const del = (commandName) => {
-    const parsedData = uniquenv.parse(file);
+    const parsedData = uniquenv.parse(UNIQUENV_FILE);
 
     const newData = parsedData.filter(( data ) => data.name !== commandName);
 
@@ -13,7 +12,7 @@ const del = (commandName) => {
         return;
     }
 
-    uniquenv.create(file, newData);
+    uniquenv.create(UNIQUENV_FILE, newData);
 
     console.log(`${ commandName } deleted`);
 };

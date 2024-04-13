@@ -1,12 +1,11 @@
 const uniquenv = require('uniquenv');
-const getOtpCode  = require('../getOtpCode');
+const getOtpCode = require('../getOtpCode');
 const execCommand = require('../execCommand');
-
-const file = './resources/db.uniquenv';
+const { UNIQUENV_FILE } = require('../../enums/enums');
 
 const run = (commandName) => {
-    const parsedData = uniquenv.parse(file);
-    const command = parsedData.find(( data ) => data.name === commandName);
+    const parsedData = uniquenv.parse(UNIQUENV_FILE);
+    const command = parsedData.find((data) => data.name === commandName);
 
     if (!command) {
         console.error(`${ commandName } not found`);

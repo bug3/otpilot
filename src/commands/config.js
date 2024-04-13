@@ -1,12 +1,12 @@
 const uniquenv = require('uniquenv');
 const fs = require('fs');
+const { UNIQUENV_FILE } = require('../../enums/enums');
 
-const file = './resources/db.uniquenv';
 const configFile = 'otpilot.json';
 
 const config = (action) => {
     if (action === 'export') {
-        const data = uniquenv.parse(file);
+        const data = uniquenv.parse(UNIQUENV_FILE);
 
         if (!data) {
             return;
@@ -26,7 +26,7 @@ const config = (action) => {
             return;
         }
 
-        uniquenv.create(file, JSON.parse(fs.readFileSync(configFile)));
+        uniquenv.create(UNIQUENV_FILE, JSON.parse(fs.readFileSync(configFile)));
     }
 };
 
