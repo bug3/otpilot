@@ -1,8 +1,6 @@
 const uniquenv = require('uniquenv');
 const fs = require('fs');
-const { UNIQUENV_FILE } = require('../../enums/enums');
-
-const configFile = 'otpilot.json';
+const { UNIQUENV_FILE, CONFIG_FILE } = require('../../enums/enums');
 
 const config = (action) => {
     if (action === 'export') {
@@ -12,21 +10,21 @@ const config = (action) => {
             return;
         }
 
-        fs.writeFile(configFile, JSON.stringify(data, null, 3), (err) => {
+        fs.writeFile(CONFIG_FILE, JSON.stringify(data, null, 3), (err) => {
             if (err) {
                 throw err;
             }
 
-            console.log(`Config file exported to ${ configFile }`);
+            console.log(`Config file exported to ${ CONFIG_FILE }`);
         });
     } else {
-        if (!fs.existsSync(configFile)) {
-            console.error(`${ configFile } file not found`);
+        if (!fs.existsSync(CONFIG_FILE)) {
+            console.error(`${ CONFIG_FILE } file not found`);
 
             return;
         }
 
-        uniquenv.create(UNIQUENV_FILE, JSON.parse(fs.readFileSync(configFile)));
+        uniquenv.create(UNIQUENV_FILE, JSON.parse(fs.readFileSync(CONFIG_FILE)));
     }
 };
 
