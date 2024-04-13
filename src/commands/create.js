@@ -15,12 +15,24 @@ const create = (commandName) => {
     if (!fs.existsSync(file)) {
         uniquenv.create(file, [data]);
     } else {
-        const parsedData = uniquenv.parse(file);
+        let parsedData = uniquenv.parse(file);
 
-        parsedData.push(data);
+        if (parsedData.find((item) => item.name === commandName)) {
+            parsedData = parsedData.map((item) => {
+                if (item.name === commandName) {
+                    return data;
+                }
+
+                return item;
+            });
+        } else {
+            parsedData.push(data);
+        }
 
         uniquenv.create(file, parsedData);
     }
+
+    console.log(`${ commandName } created`);
 };
 
 module.exports = create;
