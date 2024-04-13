@@ -1,11 +1,10 @@
 const uniquenv = require('uniquenv');
+const getOtpCode  = require('../getOtpCode');
 const { exec } = require('child_process');
 
 const file = './resources/db.uniquenv';
 
 const run = (commandName) => {
-    console.log(commandName);
-
     const parsedData = uniquenv.parse(file);
     const command = parsedData.find(( data ) => data.name === commandName);
 
@@ -15,7 +14,7 @@ const run = (commandName) => {
         return;
     }
 
-    exec(command.cmd, (error, stdout, stderr) => {
+    exec(command.cmd.replace('$otp', getOtpCode(command.secret)), (error, stdout, stderr) => {
         if (error) {
             console.error(`error: ${ error.message }`);
 
