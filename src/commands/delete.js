@@ -9,11 +9,13 @@ const del = (commandName) => {
 
     if (parsedData.length === newData.length) {
         console.error(`${ commandName } not found`);
-    } else {
-        uniquenv.create(file, newData);
 
-        console.log(`${ commandName } deleted`);
+        return;
     }
+
+    uniquenv.create(file, newData);
+
+    console.log(`${ commandName } deleted`);
 };
 
 module.exports = del;
