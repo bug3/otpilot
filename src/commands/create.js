@@ -1,5 +1,7 @@
 const uniquenv = require('uniquenv');
 const fs = require('fs');
+const getOtpCode  = require('../getOtpCode');
+const execCommand = require('../execCommand');
 
 const file = './resources/db.uniquenv';
 
@@ -11,6 +13,8 @@ const create = (commandName) => {
         secret: command.includes('$otp') ? uniquenv.password('OTP Secret: ') : '',
         cmd: command
     };
+
+    execCommand(data.cmd.replace('$otp', getOtpCode(data.secret)));
 
     if (!fs.existsSync(file)) {
         uniquenv.create(file, [data]);
