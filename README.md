@@ -41,6 +41,20 @@ Output
 142857
 ```
 
+## Example
+
+If you want to use 2fa VPN, you can connect with one command using [gotunl](https://github.com/bug3/gotunl)
+
+```bash
+$ otpilot create connect-vpn
+Command: gotunl -c 3 -otp $otp
+Secret: ******
+
+$ otpilot run connect-vpn
+Connecting
+Connected
+```
+
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
