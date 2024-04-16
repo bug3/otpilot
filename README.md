@@ -41,6 +41,10 @@ Output
 142857
 ```
 
+## Security
+
+Secret keys are safe with otpilot because config data encrypted with [uniquenv](https://github.com/bug3/uniquenv)
+
 ## Example
 
 If you want to use 2fa VPN, you can connect with one command using [gotunl](https://github.com/bug3/gotunl)
