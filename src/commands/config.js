@@ -1,8 +1,12 @@
 const uniquenv = require('uniquenv');
 const fs = require('fs');
 const { UNIQUENV_FILE, CONFIG_FILE } = require('../../enums/enums');
+const encrypt = require('../encrypt');
+const decrypt = require('../decrypt');
 
 const config = (action) => {
+    const password = uniquenv.password('Enter config file password: ');
+
     if (action === 'export') {
         const data = uniquenv.parse(UNIQUENV_FILE);
 
@@ -10,7 +14,7 @@ const config = (action) => {
             return;
         }
 
-        fs.writeFile(CONFIG_FILE, JSON.stringify(data, null, 3), (err) => {
+        fs.writeFile(CONFIG_FILE, encrypt(data, password), (err) => {
             if (err) {
                 throw err;
             }
@@ -24,7 +28,7 @@ const config = (action) => {
             return;
         }
 
-        uniquenv.create(UNIQUENV_FILE, JSON.parse(fs.readFileSync(CONFIG_FILE)));
+        uniquenv.create(UNIQUENV_FILE, decrypt(fs.readFileSync(CONFIG_FILE), password));
     }
 };
 

@@ -1,5 +1,5 @@
 const UNIQUENV_FILE = `${ __dirname }/../resources/db.uniquenv`;
-const CONFIG_FILE = 'otpilot.json';
+const CONFIG_FILE = 'otpilot.conf';
 
 module.exports = {
     UNIQUENV_FILE,
