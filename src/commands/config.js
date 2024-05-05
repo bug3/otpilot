@@ -28,7 +28,7 @@ const config = (action) => {
             return;
         }
 
-        uniquenv.create(UNIQUENV_FILE, decrypt(fs.readFileSync(CONFIG_FILE), password));
+        uniquenv.create(UNIQUENV_FILE, decrypt(String(fs.readFileSync(CONFIG_FILE)), password));
     }
 };
 
