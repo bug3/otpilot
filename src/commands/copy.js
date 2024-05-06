@@ -1,11 +1,11 @@
 const uniquenv = require('uniquenv');
-const ncp = require('copy-paste');
 const getOtpCode = require('../getOtpCode');
+const copyToClipboard = require('../copyToClipboard');
 const { UNIQUENV_FILE } = require('../../enums/enums');
 
 const copy = (commandName) => {
-    const parsedData = uniquenv.parse(UNIQUENV_FILE);
-    const command = parsedData.find(( data ) => data.name === commandName);
+    const parsedData = uniquenv.parse(UNIQUENV_FILE) ?? [];
+    const command = parsedData.find((data) => data.name === commandName);
 
     if (!command) {
         console.error(`${ commandName } not found`);
@@ -21,9 +21,7 @@ const copy = (commandName) => {
 
     const otpCode = getOtpCode(command.secret);
 
-    ncp.copy(otpCode, () => {
-        console.log(`${ otpCode } copied to clipboard`);
-    });
+    copyToClipboard(otpCode);
 };
 
 module.exports = copy;
