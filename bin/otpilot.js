@@ -11,7 +11,7 @@ const config = require('../src/commands/config');
 const cli = new Command();
 
 const main = () => {
-    cli.name('otpilot').description('Automate OTP Codes').version('1.0.1');
+    cli.name('otpilot').description('Automate OTP Codes').version('1.0.2');
 
     cli.command('list').description('list commands').action(list);
 
